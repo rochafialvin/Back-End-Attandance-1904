@@ -14,7 +14,7 @@ app.get('/', (req, res) => {
   res.status(200).send('API IS RUNNING');
 });
 
-app.use('/students', studentsRouter);
+app.use('/students/attandance', studentsRouter);
 
 app.use((error, req, res, next) => {
   res.status(500).send({
