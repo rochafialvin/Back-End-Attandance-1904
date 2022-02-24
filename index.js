@@ -6,7 +6,7 @@ const port = process.env.API_PORT;
 
 const userRouter = require("./src/routers/users")
 
-app.use(cors());
+app.use(cors("*"));
 app.use(express.json());
 app.use(express.static("public"));
 
