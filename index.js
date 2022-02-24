@@ -2,15 +2,20 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const app = express();
+const bodyParser = require("body-parser");
 const port = process.env.API_PORT;
 
+const attandancesRouter = require("./src/routers/attandances");
+
 app.use(cors());
+app.use(bodyParser.json());
 app.use(express.json());
 app.use(express.static("public"));
 
 app.get("/", (req, res) => {
   res.status(200).send("API IS RUNNING");
 });
+app.use("/attandances", attandancesRouter);
 
 app.use((error, req, res, next) => {
   res.status(500).send({
