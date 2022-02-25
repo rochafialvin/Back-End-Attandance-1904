@@ -17,6 +17,8 @@ app.get("/", (req, res) => {
 });
 
 app.use((error, req, res, next) => {
+  
+  console.log({errorMessage: error.message});
   res.status(500).send({
     status: "ERROR",
     message: error.message,

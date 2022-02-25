@@ -2,6 +2,7 @@ const {mysql2} = require("../../config/database")
 const router = require("express").Router();
 const validator = require("validator");
 const bcrypt = require("bcryptjs");
+const { restart } = require("nodemon");
 
 
 
@@ -10,7 +11,7 @@ const bcrypt = require("bcryptjs");
 
 const postUserRouter =  async (req, res, next) => {
 
-    console.log(req.body);
+    
 
 
     try {
@@ -32,14 +33,15 @@ const postUserRouter =  async (req, res, next) => {
 
         try {
            const result =  await connection.query(sql, data,) 
-           console.log(`sql`);
-           console.log(result);
+
+           
+           
             res.status(201).send({
                 message: `Data dengan username : ${req.body.fullName} berhasil ditambahkan`,
             });
             
         } catch (error) {
-            console.log(error.message);
+            
             next(error)
         }
         
