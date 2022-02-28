@@ -1,11 +1,12 @@
 const router = require("express").Router();
 const pool = require("../../config/database");
-router.get("/", async (req, res, next) => {
+router.get("/:userId", async (req, res, next) => {
   try {
     const connection = await pool.promise().getConnection();
 
-    const sqlGetAttandances = "SELECT * FROM attandances WHERE userId = ?;";
-    const dataGetAttendances = req.body.userId;
+    const sqlGetAttandances =
+      "SELECT  attandances.userId, attandances.id, attandances.tanggal, attandances.checkIn, attandances.checkOut, attandances.status, users.fullName, users.email FROM attandances JOIN users ON users.id=attandances.userId WHERE userId = ?;";
+    const dataGetAttendances = req.params.userId;
 
     const result = await connection.query(
       sqlGetAttandances,
