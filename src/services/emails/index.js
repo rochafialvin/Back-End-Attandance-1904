@@ -20,8 +20,7 @@ const courier = nodemailer.createTransport({
       name,
   }) => {
     try {
-      // user :{email : ... , name: ..., token : ...}
-      // Config untuk surat yang akan kita kirim
+      
       const mail = {
         from: "Abab Corporation <ranie7455@gmail.com> ",
         to: recepient,
