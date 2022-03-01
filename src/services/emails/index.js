@@ -30,11 +30,8 @@ const courier = nodemailer.createTransport({
         <a href="http://localhost:${process.env.API_PORT}/users/verify?token=${recepient}" > Click Here </a>
       `,
       };
-      console.log(recepient);
       const result = await courier.sendMail(mail);
 
-      console.log(result);
-      console.log("email has been sent");
     } catch (error) {
       console.log({ error });
     }

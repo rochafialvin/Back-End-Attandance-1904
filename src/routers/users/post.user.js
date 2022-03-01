@@ -2,7 +2,7 @@ const {mysql2} = require("../../config/database")
 const router = require("express").Router();
 const validator = require("validator");
 const bcrypt = require("bcryptjs");
-const { restart } = require("nodemon");
+
 const {sendVerificationEmail} = require ("../../services/emails")
 
 
@@ -41,10 +41,10 @@ const postUserRouter =  async (req, res, next) => {
 
             sendVerificationEmail({
                 recepient: data.email,
-                subject: "Verification",
+                subject: "Email Verification",
                 name: data.fullName
             });
-            console.log("email has been sent");
+            
             
         } catch (error) {
             
