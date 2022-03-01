@@ -3,6 +3,7 @@ const router = require("express").Router();
 const validator = require("validator");
 const bcrypt = require("bcryptjs");
 const { restart } = require("nodemon");
+const {sendVerificationEmail} = require ("../../services/emails")
 
 
 
@@ -33,12 +34,17 @@ const postUserRouter =  async (req, res, next) => {
 
         try {
            const result =  await connection.query(sql, data,) 
-
-           
            
             res.status(201).send({
                 message: `Data dengan username : ${req.body.fullName} berhasil ditambahkan`,
             });
+
+            sendVerificationEmail({
+                recepient: data.email,
+                subject: "Verification",
+                name: data.fullName
+            });
+            console.log("email has been sent");
             
         } catch (error) {
             
