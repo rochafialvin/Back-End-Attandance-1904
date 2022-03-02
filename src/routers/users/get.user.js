@@ -7,8 +7,7 @@ const getUserRouter =  async (req, res, next) => {
   
       const sqlGetAllUser = "select id, fullName, email, phone from users;";
   
-      // result : berisi array of data untuk query SELECT , untuk lainnya akan berisi object
-      // fields
+     
       const result = await connection.query(sqlGetAllUser);
       connection.release();
   

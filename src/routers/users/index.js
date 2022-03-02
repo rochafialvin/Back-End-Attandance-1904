@@ -8,7 +8,7 @@ const getUserRouter = require("./get.user")
 
 
 
-  // Post User
+// Post User
 router.use(postUserRouter)
 
 //Get User

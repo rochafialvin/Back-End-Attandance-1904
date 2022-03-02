@@ -22,10 +22,10 @@ const courier = nodemailer.createTransport({
     try {
       
       const mail = {
-        from: "Abab Corporation <ranie7455@gmail.com> ",
+        from: "Student Report <ranie7455@gmail.com> ",
         to: recepient,
         subject,
-        html: `<h2>Hi ${name}, please click the link for verify you email</h2>
+        html: `<h2>Hi ${name}, Thanks for register. please click the link to verify you email</h2>
         <a href="http://localhost:${process.env.API_PORT}/users/verify?token=${recepient}" > Click Here </a>
       `,
       };

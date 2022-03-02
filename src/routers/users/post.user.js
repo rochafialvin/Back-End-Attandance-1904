@@ -18,7 +18,7 @@ const postUserRouter =  async (req, res, next) => {
     try {
         const connection = await mysql2.promise().getConnection()
 
-        // const connection = await mysql2.createConnection();
+        
         
 
         const sql = "INSERT INTO users SET ?";
