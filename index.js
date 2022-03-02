@@ -2,14 +2,12 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const app = express();
-const bodyParser = require("body-parser");
 const port = process.env.API_PORT;
 
 const attendancesRouter = require("./src/routers/attendances");
 const userRouter = require("./src/routers/users/index");
 
 app.use(cors());
-app.use(bodyParser.json());
 app.use(express.json());
 app.use(express.static("public"));
 
