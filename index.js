@@ -4,7 +4,8 @@ const cors = require("cors");
 const app = express();
 const port = process.env.API_PORT;
 
-const userRouter = require('./src/routers/users/index')
+const attendancesRouter = require("./src/routers/attendances");
+const userRouter = require("./src/routers/users/index");
 
 app.use(cors());
 app.use(express.json());
@@ -13,8 +14,9 @@ app.use(express.static("public"));
 app.get("/", (req, res) => {
   res.status(200).send("API IS RUNNING");
 });
+app.use("/attendances", attendancesRouter);
 
-app.use("/users", userRouter)
+app.use("/users", userRouter);
 
 app.use((error, req, res, next) => {
   res.status(500).send({
