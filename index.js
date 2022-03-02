@@ -5,7 +5,7 @@ const app = express();
 const bodyParser = require("body-parser");
 const port = process.env.API_PORT;
 
-const attandancesRouter = require("./src/routers/attandances");
+const attendancesRouter = require("./src/routers/attendances");
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -15,7 +15,7 @@ app.use(express.static("public"));
 app.get("/", (req, res) => {
   res.status(200).send("API IS RUNNING");
 });
-app.use("/attandances", attandancesRouter);
+app.use("/attendances", attendancesRouter);
 
 app.use((error, req, res, next) => {
   res.status(500).send({
